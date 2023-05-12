@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gogoupone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gogoupone
+  template:
+    metadata:
+      labels:
+        app: gogoupone
+    spec:
+      containers:
+      - image: okteto.dev/gogoupone:latest
+        name: gogoupone
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: ParameterSSENCYPT
+          value: "chacha20-ietf-poly1305"
+        - name: Vless_UUID
+          value: "8b684e70-4be7-441f-b475-3e6fb60f0eae"
+        - name: Vless_Path
+          value: "/8b684e70-4be7-441f-b475-3e6fb60f0eae-vless"
+        - name: Vmess_UUID
+          value: "8b684e70-4be7-441f-b475-3e6fb60f0eae"
+        - name: Vmess_Path
+          value: "/8b684e70-4be7-441f-b475-3e6fb60f0eae-vmess"
+        - name: Trojan_UUID
+          value: "8b684e70-4be7-441f-b475-3e6fb60f0eae"
+        - name: Trojan_Path
+          value: "/8b684e70-4be7-441f-b475-3e6fb60f0eae-trojan"
+        - name: SS_UUID
+          value: "8b684e70-4be7-441f-b475-3e6fb60f0eae"
+        - name: SS_Path
+          value: "/8b684e70-4be7-441f-b475-3e6fb60f0eae-ss"
+        - name: Share_Path
+          value: "/8b684e70-4be7-441f-b475-3e6fb60f0eae-share"
